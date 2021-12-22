@@ -50,7 +50,7 @@ export default function (options) {
 
 			if(options.durableObjectsPath){
 				const relPath = path.relative(path.join(process.cwd(),".svelte-kit/cloudflare-workers"),path.join(process.cwd(),options.durableObjectsPath))
-				fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relPath}/index"`)
+				fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relPath}/durables.mjs"`)
 			}
 			await esbuild.build(build_options);
 
