@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, writeFileSync, appendFileSync, readdir } from 'fs';
-import { posix } from 'path';
+import { posix, relative } from 'path';
 import { execSync } from 'child_process';
 import esbuild from 'esbuild';
 import toml from '@iarna/toml';
@@ -56,7 +56,7 @@ export default function (options) {
 
 			if(options.durableObjectsPath){
 				appendFileSync(`${tmp}/entry.js`, `export * from "${relativePath}/durables.mjs"`)
-				readdir(relPath, (err, files) => {
+				readdir(relativePath, (err, files) => {
 					if (err) throw err;
 
 					let exportString = "";
