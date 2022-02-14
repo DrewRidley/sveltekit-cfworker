@@ -50,6 +50,10 @@ export default {
 				method: request.method,
 			});
 
+			if (renderered instanceof Response) {
+				return rendered;
+			}
+
 			if (rendered) {
 				return new Response(rendered.body, {
 					status: rendered.status,

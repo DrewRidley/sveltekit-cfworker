@@ -51,8 +51,22 @@ export default function (options) {
 			if(options.durableObjectsPath){
 				const relPath = path.relative(path.join(process.cwd(),".svelte-kit/cloudflare-workers"),path.join(process.cwd(),options.durableObjectsPath))
 				fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relPath}/durables.mjs"`)
+				fs.readdir(relPath, (err, files) => {
+					if (err) throw err;
+
+					let exportString = "";
+					files.forEach(file => {
+						if(file.endsWith(".mjs")){
+							exportString += `export * from ${relPath}/${file}\n`;
+						};
+					});
+
+					//Append the import string list to the file.
+					fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, exportString);
+				}); 
 			}
-			await esbuild.build(build_options);
+
+ 			await esbuild.build(build_options);
 
 			fs.writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.mjs' }));
 			
