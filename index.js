@@ -6,7 +6,7 @@ import toml from '@iarna/toml';
 import { fileURLToPath } from 'url';
 
 /** @type {import('.')} */
-export default function () {
+export default function (options) {
 	return {
 		name: '@sveltejs/adapter-cloudflare-workers',
 
