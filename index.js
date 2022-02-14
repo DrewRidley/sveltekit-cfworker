@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync, appendFileSync, readdirSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, appendFileSync, readdir } from 'fs';
 import { posix } from 'path';
 import { execSync } from 'child_process';
 import esbuild from 'esbuild';
