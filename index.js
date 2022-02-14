@@ -66,7 +66,7 @@ export default function (options) {
 				}); 
 			}
 
- 			await esbuild.build(build_options);
+			await esbuild.build(build_options);
 
 			fs.writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.mjs' }));
 			

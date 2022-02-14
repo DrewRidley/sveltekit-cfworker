@@ -50,7 +50,7 @@ export default {
 				method: request.method,
 			});
 
-			if (renderered instanceof Response) {
+			if (rendered instanceof Response) {
 				return rendered;
 			}
 
