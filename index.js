@@ -55,7 +55,7 @@ export default function (options) {
 
 
 			if(options.durableObjectsPath){
-				appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relativePath}/durables.mjs"`)
+				appendFileSync(`${tmp}/entry.js`, `export * from "${relativePath}/durables.mjs"`)
 				readdir(relPath, (err, files) => {
 					if (err) throw err;
 
