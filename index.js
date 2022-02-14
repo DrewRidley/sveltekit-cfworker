@@ -5,6 +5,7 @@ import esbuild from 'esbuild';
 import toml from '@iarna/toml';
 import { fileURLToPath } from 'url';
 
+
 /** @type {import('.')} */
 export default function (options) {
 	return {
@@ -54,15 +55,14 @@ export default function (options) {
 
 
 			if(options.durableObjectsPath){
-				const relPath = path.relative(path.join(process.cwd(),tmp),path.join(process.cwd(),options.durableObjectsPath))
-				fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relPath}/durables.mjs"`)
+				fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relativePath}/durables.mjs"`)
 				fs.readdir(relPath, (err, files) => {
 					if (err) throw err;
 
 					let exportString = "";
 					files.forEach(file => {
 						if(file.endsWith(".mjs")){
-							exportString += `export * from ${relPath}/${file}\n`;
+							exportString += `export * from ${relativePath}/${file}\n`;
 						};
 					});
 
