@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync, appendFileSync, readdirSync } from 'fs';
 import { posix } from 'path';
 import { execSync } from 'child_process';
 import esbuild from 'esbuild';
@@ -55,8 +55,8 @@ export default function (options) {
 
 
 			if(options.durableObjectsPath){
-				fs.appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relativePath}/durables.mjs"`)
-				fs.readdir(relPath, (err, files) => {
+				appendFileSync(`.svelte-kit/cloudflare-workers/entry.js`, `export * from "${relativePath}/durables.mjs"`)
+				readdir(relPath, (err, files) => {
 					if (err) throw err;
 
 					let exportString = "";
@@ -67,7 +67,7 @@ export default function (options) {
 					});
 
 					//Append the import string list to the file.
-					fs.appendFileSync(`${tmp}/entry.js`, exportString);
+					appendFileSync(`${tmp}/entry.js`, exportString);
 				});
 			} 
 
