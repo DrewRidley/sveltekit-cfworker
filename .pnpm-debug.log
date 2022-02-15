@@ -1,0 +1,105 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "name": "@drewridley/adapter-cloudflare-workers",
+      "version": "0.1.2",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/drewridley/kit",
+        "directory": "packages/adapter-cloudflare-workers"
+      },
+      "license": "MIT",
+      "type": "module",
+      "exports": {
+        ".": {
+          "import": "./index.js"
+        },
+        "./package.json": "./package.json"
+      },
+      "main": "index.js",
+      "types": "index.d.ts",
+      "files": [
+        "files",
+        "index.d.ts"
+      ],
+      "scripts": {
+        "lint": "eslint --ignore-path .gitignore \"**/*.{ts,js,svelte}\" && npm run check-format",
+        "format": "npm run check-format -- --write",
+        "check-format": "prettier --check . --config ../../.prettierrc --ignore-path .gitignore"
+      },
+      "dependencies": {
+        "@iarna/toml": "^2.2.5",
+        "esbuild": "^0.13.15"
+      },
+      "devDependencies": {
+        "@cloudflare-kv-asset-handler": "^0.2.0"
+      }
+    },
+    "prefix": "/Users/drewridley/Documents/Projects/sveltekit-cfworker"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "/Users/drewridley/.pnpm-store/v3",
+    "virtualStoreDir": "/Users/drewridley/Documents/Projects/sveltekit-cfworker/node_modules/.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "/Users/drewridley/Documents/Projects/sveltekit-cfworker",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@iarna/toml/2.2.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@iarna/toml",
+      "rawSpec": "^2.2.5"
+    }
+  },
+  "5 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@iarna/toml/2.2.5",
+    "requester": "/Users/drewridley/Documents/Projects/sveltekit-cfworker",
+    "status": "resolved"
+  },
+  "6 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@iarna/toml/2.2.5",
+    "requester": "/Users/drewridley/Documents/Projects/sveltekit-cfworker",
+    "status": "found_in_store"
+  },
+  "7 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/esbuild/0.13.15",
+    "wanted": {
+      "dependentId": ".",
+      "name": "esbuild",
+      "rawSpec": "^0.13.15"
+    }
+  },
+  "8 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/esbuild/0.13.15",
+    "requester": "/Users/drewridley/Documents/Projects/sveltekit-cfworker",
+    "status": "resolved"
+  },
+  "9 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/esbuild/0.13.15",
+    "requester": "/Users/drewridley/Documents/Projects/sveltekit-cfworker",
+    "status": "found_in_store"
+  },
+  "10 error pnpm": {
+    "code": "ERR_PNPM_FETCH_405",
+    "request": {
+      "url": "https://registry.npmjs.org/@cloudflare-kv-asset-handler"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "@cloudflare-kv-asset-handler",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npmjs.org/@cloudflare-kv-asset-handler: Method Not Allowed - 405",
+      "code": "ERR_PNPM_FETCH_405",
+      "stack": "pnpm: GET https://registry.npmjs.org/@cloudflare-kv-asset-handler: Method Not Allowed - 405\n    at RetryOperation._fn (/usr/local/lib/node_modules/pnpm/dist/pnpm.cjs:85663:19)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"
+    }
+  }
+}
