@@ -55,7 +55,6 @@ export default function (options) {
 
 
 			if(options.durableObjectsPath){
-				appendFileSync(`${tmp}/entry.js`, `export * from "${relativePath}/durables.mjs"`)
 				readdir(relativePath, (err, files) => {
 					if (err) throw err;
 
