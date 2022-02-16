@@ -10,7 +10,7 @@ export default {
 	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
 
-		if (url.pathname.startsWith(prefix)) {
+		if (url.pathname.startsWith(prefix) || manifest.assets.has(url.pathname)) {
 			const res = await getAssetFromKV(
 				{
 					request,
@@ -26,7 +26,7 @@ export default {
 
 			return res;
 		}
-		return new Response(`Prefix Match: ${prefix} \n Url Pathname: ${url.pathname}`, { status: 200 });
-		//return await app.render(request);
+
+		return await app.render(request);
 	}
 }
