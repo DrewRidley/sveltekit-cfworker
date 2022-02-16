@@ -72,12 +72,11 @@ export default function (options = {}) {
 
 			await esbuild.build({
 				entryPoints: [`${tmp}/entry.js`],
-				outfile: `${entrypoint}/index.js`,
+				outfile: `${entrypoint}/index.mjs`,
 				bundle: true,
 				target: 'es2020',
 				format: 'esm',
-				platform: 'neutral',
-				external: ['@cloudflare/kv-asset-handler']
+				platform: 'neutral'
 			});
 
 			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.js' }));
