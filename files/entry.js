@@ -26,7 +26,7 @@ export default {
 
 			return res;
 		}
-
-		return await app.render(request);
+		return new Response(`Prefix Match: ${prefix} \n Url Pathname: ${url.pathname}`, { status: 200 });
+		//return await app.render(request);
 	}
 }
