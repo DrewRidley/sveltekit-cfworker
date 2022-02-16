@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 
 
 /** @type {import('.')} */
-export default function (options) {
+export default function (options = {}) {
 	return {
 		name: '@sveltejs/adapter-cloudflare-workers',
 
