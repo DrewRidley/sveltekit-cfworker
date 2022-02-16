@@ -10,7 +10,10 @@ export default {
 	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
 
-		return new Response('Success rendering route!', { status: 500 });
+		if (url.pathname.startsWith(prefix)) {
+			return new Response("This should be static content.", { status:});
+		}
 
+		return await app.render(request);
 	}
 }
