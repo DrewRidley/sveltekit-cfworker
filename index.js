@@ -77,7 +77,7 @@ export default function (options = {}) {
 				target: 'es2020',
 				format: 'esm',
 				platform: 'neutral',
-				mainFields: ['dist/index.js']
+				mainFields: ['main']
 			});
 
 			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.js' }));
