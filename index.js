@@ -75,7 +75,9 @@ export default function (options = {}) {
 				outfile: `${entrypoint}/index.mjs`,
 				bundle: true,
 				target: 'es2020',
-				format: 'esm'
+				format: 'esm',
+				platform: 'neutral',
+				mainFields: ['dist/index.js']
 			});
 
 			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.js' }));
