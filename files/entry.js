@@ -14,6 +14,7 @@ export default {
 			return new Response(`Asset namespace: ${env.__STATIC_CONTENT}`, { status: 200 });
 		}
 
-		return await app.render(request);
+		return new Response(`Asset namespace: ${env.__STATIC_CONTENT}`, { status: 200 });
+		//return await app.render(request);
 	}
 }
