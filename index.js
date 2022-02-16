@@ -9,7 +9,7 @@ import { fileURLToPath } from 'url';
 /** @type {import('.')} */
 export default function (options = {}) {
 	return {
-		name: '@sveltejs/adapter-cloudflare-workers',
+		name: 'svelte-cfworker',
 
 		async adapt(builder) {
 			const { site } = validate_config(builder);
