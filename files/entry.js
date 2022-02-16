@@ -11,7 +11,20 @@ export default {
 		const url = new URL(request.url);
 
 		if (url.pathname.startsWith(prefix)) {
-			return new Response(`Asset namespace: ${env.__STATIC_CONTENT}`, { status: 200 });
+			const res = await getAssetFromKV(
+				{
+					request,
+					waitUntil(promise) {
+						return ctx.waitUntil(promise);
+					},	
+				},
+				{
+					ASSET_NAMESPACE: env.__STATIC_CONTENT,
+					ASSET_MANIFEST: manifest,
+				}
+			);
+
+			return res;
 		}
 
 		return new Response(`Asset namespace: ${env.__STATIC_CONTENT}`, { status: 200 });
