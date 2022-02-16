@@ -1,19 +1,8 @@
 {
 	"name": "@drewridley/adapter-cloudflare-workers",
 	"version": "0.1.4",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/drewridley/kit",
-		"directory": "packages/adapter-cloudflare-workers"
-	},
 	"license": "MIT",
 	"type": "module",
-	"exports": {
-		".": {
-			"import": "./index.js"
-		},
-		"./package.json": "./package.json"
-	},
 	"main": "index.js",
 	"types": "index.d.ts",
 	"files": [
