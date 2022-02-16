@@ -33,7 +33,7 @@ export default function (options = {}) {
 			builder.copy(`${files}/_package.json`, `${tmp}/package.json`);
 
 			// TODO would be cool if we could make this step unnecessary somehow
-			const stdout = execSync('npm install', { cwd: tmp });
+			const stdout = execSync('pnpm install', { cwd: tmp });
 			builder.log.info(stdout.toString());
 
 			builder.log.minor('Generating worker...');
