@@ -11,7 +11,7 @@ export default {
 		const url = new URL(request.url);
 
 		if (url.pathname.startsWith(prefix)) {
-			return new Response("This should be static content.", { status:});
+			return new Response("This should be static content.", { status: 200 });
 		}
 
 		return await app.render(request);
