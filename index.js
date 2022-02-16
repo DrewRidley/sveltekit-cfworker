@@ -77,7 +77,7 @@ export default function (options = {}) {
 				target: 'es2020',
 				format: 'esm',
 				platform: 'neutral',
-				external: []
+				external: ['@cloudflare/kv-asset-handler']
 			});
 
 			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.js' }));
