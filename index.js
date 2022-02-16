@@ -60,9 +60,7 @@ export default function (options = {}) {
 
 					let exportString = "";
 					files.forEach(file => {
-						if(file.endsWith(".mjs")){
-							exportString += `export * from ${relativePath}/${file}\n`;
-						};
+						exportString += `export * from ${relativePath}/${file}\n`;
 					});
 
 					//Append the import string list to the file.
@@ -75,12 +73,12 @@ export default function (options = {}) {
 				outfile: `${entrypoint}/index.mjs`,
 				bundle: true,
 				target: 'es2020',
-				format: 'esm',
+				format: 'cjs',
 				platform: 'neutral',
-				mainFields: ['main']
+				mainFields: ['module', 'main']
 			});
 
-			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.js' }));
+			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.mjs' }));
 
 			builder.log.minor('Copying assets...');
 			builder.writeClient(bucket);
