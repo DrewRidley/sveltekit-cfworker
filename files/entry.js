@@ -2,6 +2,9 @@ import { App } from 'APP';
 import { manifest, prerendered } from 'MANIFEST';
 import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 
+import manifestJSON from '__STATIC_CONTENT_MANIFEST';
+const assetManifest = JSON.parse(manifestJSON);
+
 const app = new App(manifest);
 
 const prefix = `/${manifest.appDir}/`;
@@ -20,7 +23,7 @@ export default {
 				},
 				{
 					ASSET_NAMESPACE: env.__STATIC_CONTENT,
-					ASSET_MANIFEST: manifest,
+					ASSET_MANIFEST: assetManifest,
 				}
 			);
 
@@ -51,7 +54,7 @@ export default {
 				},
 				{
 					ASSET_NAMESPACE: env.__STATIC_CONTENT,
-					ASSET_MANIFEST: manifest,
+					ASSET_MANIFEST: assetManifest,
 				}
 			);
 		}
