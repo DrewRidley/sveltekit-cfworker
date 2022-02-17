@@ -76,8 +76,6 @@ export default function (options = {}) {
 				format: 'esm',
 				platform: 'neutral',
 				mainFields: ['module', 'main'],
-				minify: true,
-				external: ['__STATIC_CONTENT_MANIFEST']
 			});
 
 			writeFileSync(`${entrypoint}/package.json`, JSON.stringify({ main: 'index.mjs' }));

@@ -2,15 +2,15 @@ import { App } from 'APP';
 import { manifest, prerendered } from 'MANIFEST';
 import { getAssetFromKV } from '@cloudflare/kv-asset-handler';
 
-import manifestJSON from '__STATIC_CONTENT_MANIFEST';
-const assetManifest = JSON.parse(manifestJSON);
-
 const app = new App(manifest);
 
 const prefix = `/${manifest.appDir}/`;
 
 export default {
 	async fetch(request, env, ctx) {
+
+		return new Response(`Static Content: ${env.__STATIC_CONTENT}`, { status: 200 })
+
 		const url = new URL(request.url);
 
 		if (url.pathname.startsWith(prefix) || manifest.assets.has(url.pathname.replace('/', ''))) {
@@ -23,7 +23,7 @@ export default {
 				},
 				{
 					ASSET_NAMESPACE: env.__STATIC_CONTENT,
-					ASSET_MANIFEST: assetManifest,
+					ASSET_MANIFEST: manifest,
 				}
 			);
 
@@ -54,7 +54,7 @@ export default {
 				},
 				{
 					ASSET_NAMESPACE: env.__STATIC_CONTENT,
-					ASSET_MANIFEST: assetManifest,
+					ASSET_MANIFEST: manifest,
 				}
 			);
 		}
