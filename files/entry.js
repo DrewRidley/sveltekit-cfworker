@@ -27,6 +27,42 @@ export default {
 			return res;
 		}
 
-		return await app.render(request);
+		const pathname = url.pathname.replace(/\/$/, '');
+		let file = pathname.substring(1);
+
+		try {
+			file = decodeURIComponent(file);
+		}
+		catch (err) {
+			//ignore
+		}
+
+		if (
+			manifest.assets.has(file) ||
+			manifest.assets.has(file + '/index.html') ||
+			prerendered.has(pathname || '/')
+		) {
+			return await getAssetFromKV(
+				{
+					request,
+					waitUntil(promise) {
+						return ctx.waitUntil(promise);
+					},	
+				},
+				{
+					ASSET_NAMESPACE: env.__STATIC_CONTENT,
+					ASSET_MANIFEST: manifest,
+				}
+			);
+		}
+
+		try {
+			return await app.render(request);
+		}
+		catch (ex) {
+			return new Response('Error rendering route:' + (e.message || e.toString()), { status: 500 });
+		}
+
+
 	}
 }
