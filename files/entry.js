@@ -8,9 +8,6 @@ const prefix = `/${manifest.appDir}/`;
 
 export default {
 	async fetch(request, env, ctx) {
-
-		return new Response(`Static Content: ${env.__STATIC_CONTENT}`, { status: 200 })
-
 		const url = new URL(request.url);
 
 		if (url.pathname.startsWith(prefix) || manifest.assets.has(url.pathname.replace('/', ''))) {
